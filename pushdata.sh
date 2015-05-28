@@ -34,4 +34,4 @@ SQL
 # run create table statement
 $RUN_ON_MYDB -c "$CREATE_TABLE"
 
-cat $INPUT_DATA_FILE | sed 's/\$//g' | sed 's/\ //g' | psql -h "$DBHOST" -U $DBUSER -d $DB -c "\COPY $TABLE_NAME FROM STDIN WITH CSV HEADER;" 
+cat $INPUT_DATA_FILE | sed 's/\$//g' | sed 's/, ,/,,/g' | psql -h "$DBHOST" -U $DBUSER -d $DB -c "\COPY $TABLE_NAME FROM STDIN WITH CSV HEADER;" 
