@@ -15,7 +15,7 @@ INPUT_DATA_FILE=$2
 TABLE_NAME=$3
 
 # formulate CREATE TABLE in SQL statement using csv file
-#csvsql $INPUT_DATA_FILE > table.sql
+csvsql $INPUT_DATA_FILE > table.sql
 # manually edit/verify CREATE TABLE statement
 vim table.sql
 
