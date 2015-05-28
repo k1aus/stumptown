@@ -2,6 +2,12 @@
 
 set -e 
 
+if [ "$#" -ne 3 ]; then
+  echo "Usage: ./push_data user_name input_data_file.csv table_name" >&2
+  echo "For example: ./push_data maharishi building_permits.csv esha_m.building_permits" >&2
+  exit 1
+fi
+
 DBHOST="dssgsummer2014postgres.c5faqozfo86k.us-west-2.rds.amazonaws.com"
 DB="training_2015" 
 DBUSER=$1
