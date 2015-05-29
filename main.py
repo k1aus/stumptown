@@ -23,27 +23,6 @@ def getCommentsCorpus(conn):
             corpus.append(a);
     return corpus;
 
-def createTextFeatures(corpus):
-    # create vectorizer (tokenizer)
-    vectorizer = CountVectorizer(lowercase=True, max_df=1.0, min_df=0.0, ngram_range=(1, 1), preprocessor=None, stop_words='english');
-
-    # create matrix of bag-of-words vectors
-    bow = vectorizer.fit_transform(corpus);
-
-    print('creating bow');
-
-    # tf-idf weighting of bow
-    transformer = TfidfTransformer();
-    tfidf = transformer.fit_transform(bow)
-
-    # column sums of the matrix - word freq in corpus
-    col_sum = bow.sum(axis=0)
-    col_sum_arr = np.squeeze(np.asarray(col_sum))
-
-    # row sums of the matrix - comment sizes
-    row_sum = bow.sum(axis=1)
-    row_sum_arr = np.squeeze(np.asarray(row_sum))
-
 # connect to db
 conn = connectDb("training_2015", "karlovcec", "karlovcec", "dssgsummer2014postgres.c5faqozfo86k.us-west-2.rds.amazonaws.com", "5432");
 
